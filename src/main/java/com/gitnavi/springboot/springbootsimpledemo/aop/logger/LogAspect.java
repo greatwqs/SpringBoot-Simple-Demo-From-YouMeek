@@ -1,7 +1,9 @@
 package com.gitnavi.springboot.springbootsimpledemo.aop.logger;
 
-import com.gitnavi.springboot.springbootsimpledemo.common.GlobalVariable;
-import lombok.extern.log4j.Log4j2;
+import java.util.Arrays;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -9,19 +11,24 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
+import com.gitnavi.springboot.springbootsimpledemo.common.GlobalVariable;
+
+import lombok.extern.log4j.Log4j2;
 
 @Aspect
 @Order(5)
 @Component
 @Log4j2
 public class LogAspect {
+	
+	private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
 
 
 	//=================================================================================
